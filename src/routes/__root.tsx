@@ -9,6 +9,9 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import { FloatingActions } from "@/components/FloatingActions";
 
 function NotFoundComponent() {
   return (
@@ -72,11 +75,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Kedarnath Helicopter Booking | Phata, Sersi & Guptkashi Helipad" },
+      { name: "description", content: "Book Kedarnath helicopter yatra from Phata, Sersi & Guptkashi helipads. Instant booking, official operators, best prices. Call +91 82072 26709." },
+      { name: "keywords", content: "Kedarnath helicopter booking, Phata helipad booking, Kedarnath yatra helicopter, cheap helicopter Kedarnath, Sersi helipad, Guptkashi helicopter" },
+      { name: "author", content: "Kedarnath Heli Yatra" },
+      { property: "og:title", content: "Kedarnath Helicopter Booking — Instant Confirmation" },
+      { property: "og:description", content: "Book your Kedarnath helicopter yatra in minutes. Trusted operators from Phata, Sersi & Guptkashi." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -113,7 +117,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <div className="flex min-h-screen flex-col">
+        <SiteHeader />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <SiteFooter />
+        <FloatingActions />
+      </div>
     </QueryClientProvider>
   );
 }
